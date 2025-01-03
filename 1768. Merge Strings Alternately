@@ -44,16 +44,3 @@ class Solution:
                 r+=word1[i]+word2[i]
             r+=word2[len(word1):]
         return(r)
-
-### Examples:
-1. **Input**: `word1 = "abc", word2 = "pqr"`
-   - **Output**: `"apbqcr"`
-   - Explanation: The merged string will be: a p b q c r.
-
-2. **Input**: `word1 = "ab", word2 = "pqrs"`
-   - **Output**: `"apbqrs"`
-   - Explanation: The merged string will be: a p b q r s.
-
-3. **Input**: `word1 = "abcd", word2 = "pq"`
-   - **Output**: `"apbqcd"`
-   - Explanation: The merged string will be: a p b q c d.
