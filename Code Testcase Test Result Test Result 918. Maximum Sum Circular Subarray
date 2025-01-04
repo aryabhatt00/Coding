@@ -1,0 +1,31 @@
+class Solution:
+    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+        max_ending_here = nums[0]
+        max_sum = nums[0]
+        
+        # Step 2: Find the maximum subarray sum (Non-Circular) using Kadane's Algorithm
+        for num in nums[1:]:
+            max_ending_here = max(num, max_ending_here + num)
+            max_sum = max(max_sum, max_ending_here)
+        
+        # Step 3: Initialize variables for Kadane's algorithm on the negated array (for minimum subarray sum)
+        min_ending_here = nums[0]
+        min_sum = nums[0]
+        
+        for num in nums[1:]:
+            min_ending_here = min(num, min_ending_here + num)
+            min_sum = min(min_sum, min_ending_here)
+        
+        # Step 4: Calculate the total sum of the array
+        total_sum = sum(nums)
+        
+        # Step 5: Handle the case where all elements are negative (i.e., total_sum == min_sum)
+        if total_sum == min_sum:
+            return max_sum  # Return the regular maximum subarray sum
+    
+        # Step 6: Calculate the maximum circular subarray sum
+        circular_sum = total_sum - min_sum
+        
+        # Step 7: Return the maximum of the regular max subarray sum and the circular subarray sum
+        return max(max_sum, circular_sum)
+  
