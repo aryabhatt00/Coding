@@ -1,0 +1,51 @@
+| Operation             | Time Complexity | Space Complexity |
+| --------------------- | --------------- | ---------------- |
+| Character counting    | O(n)            | O(k)             |
+| Sum building from map | O(k)            | O(1)             |
+| Final center decision | O(1)            | O(1)             |
+| **Overall**           | **O(n)**        | **O(k)**         |
+
+******************************************************
+#Java
+class Solution {
+    public int longestPalindrome(String s) {
+        HashMap<Character,Integer> map1= new HashMap<>();
+        for(char c: s.toCharArray()){
+            map1.put(c,map1.getOrDefault(c,0)+1);
+        }
+        int n=0;
+        boolean flag=false;
+        for(int val:map1.values()){
+            if(val%2==0){
+                n+=val;
+            }
+            else if(val%2!=0){
+                n+=val-1;
+                flag= true;
+            }           
+        }
+        if (flag) n+=1;
+        return n;
+    }
+}
+******************************************************
+#Python
+def longestPalindrome(s):
+    from collections import Counter
+    count = Counter(s)
+    n = 0
+    has_odd = False
+
+    for val in count.values():
+        if val % 2 == 0:
+            n += val
+        else:
+            n += val - 1
+            has_odd = True
+
+    if has_odd:
+        n += 1
+    return n
+
+
+******************************************************
