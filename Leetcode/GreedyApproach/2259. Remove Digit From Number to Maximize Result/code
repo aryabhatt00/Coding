@@ -1,0 +1,35 @@
+| Operation                    | Time Complexity    | Space Complexity |
+| ---------------------------- | ------------------ | ---------------- |
+| Iterate over string          | O(n)               | O(1)             |
+| Remove character and compare | O(n) (copy string) | O(n)             |
+| Track max lexicographic      | O(1)               | O(n)             |
+| **Overall**                  | **O(n²)** worst    | **O(n)**         |
+**************************************************************************
+#Java
+  class Solution {
+    public String removeDigit(String number, char digit) {
+        String maxNumber="";
+        for(int i=0; i<number.length();i++){
+            if(number.charAt(i)==digit){
+                String maxSubstring=number.substring(0,i)+number.substring(i+1);
+                if(maxNumber.equals("") || maxSubstring.compareTo(maxNumber)>0 )
+                maxNumber=maxSubstring;
+            }
+        } 
+        return maxNumber;
+    }    
+}
+
+  **************************************************************************
+  
+#Python
+  def removeDigit(number: str, digit: str) -> str:
+    max_number = ""
+    for i in range(len(number)):
+        if number[i] == digit:
+            candidate = number[:i] + number[i+1:]
+            if max_number == "" or candidate > max_number:
+                max_number = candidate
+    return max_number
+
+  **************************************************************************
