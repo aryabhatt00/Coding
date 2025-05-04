@@ -1,0 +1,36 @@
+| Operation                        | Time Complexity | Space Complexity |
+| -------------------------------- | --------------- | ---------------- |
+| Traverse each character in `s`   | O(n)            | O(1)             |
+| Count a move when `'X'` is found | O(1)            | O(1)             |
+| Skip next 2 characters           | O(1)            | O(1)             |
+
+****************************************************************
+#Java
+class Solution {
+    public int minimumMoves(String s) {
+        int minMoves=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='X'){
+                minMoves+=1;
+                i=i+2;
+            }
+        }
+        return minMoves;
+    }
+}
+
+****************************************************************
+#Python
+class Solution:
+    def minimumMoves(self, s: str) -> int:
+        min_moves = 0
+        i = 0
+        while i < len(s):
+            if s[i] == 'X':
+                min_moves += 1
+                i += 3
+            else:
+                i += 1
+        return min_moves
+
+****************************************************************
