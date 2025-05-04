@@ -1,0 +1,49 @@
+| Operation                       | Time Complexity | Space Complexity              |
+| ------------------------------- | --------------- | ----------------------------- |
+| Sorting the array               | O(n log n)      | O(n) (Java) / O(1) (in-place) |
+| Looping through array           | O(n)            | O(1)                          |
+| Conditional check for every 3rd | O(1) per check  | O(1)                          |
+| **Overall**                     | **O(n log n)**  | **O(n) or O(1)**              |
+***************************************************************************************
+#Java
+
+import java.util.Arrays;
+import java.util.Collections;
+class Solution {
+    public int minimumCost(int[] cost) {
+        Arrays.sort(cost);
+        int cost1=0;
+        if(cost.length==2){
+            cost1=cost[0]+cost[1];
+        }
+        else if(cost.length==1){
+            return cost[0];
+        }
+        else{
+        for(int i=cost.length-1;i>=0;i--){
+            int j=cost.length-i-1;
+            if(j%3!=2){
+                cost1+=cost[i];
+            }
+        }
+        }     
+        return cost1;
+    }
+}
+***************************************************************************************
+#Python
+def minimumCost(cost):
+    cost.sort()
+    if len(cost) == 1:
+        return cost[0]
+    elif len(cost) == 2:
+        return cost[0] + cost[1]
+
+    total = 0
+    for i in range(len(cost) - 1, -1, -1):
+        j = len(cost) - 1 - i
+        if j % 3 != 2:
+            total += cost[i]
+    return total
+
+***************************************************************************************
