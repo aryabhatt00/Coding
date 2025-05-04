@@ -1,0 +1,37 @@
+
+| Operation             | Time Complexity | Space Complexity |
+| --------------------- | --------------- | ---------------- |
+| Extract digits        | O(1)            | O(1)             |
+| Sort digits (4 items) | O(1)            | O(1)             |
+| Form two numbers      | O(1)            | O(1)             |
+| **Overall**           | **O(1)**        | **O(1)**         |
+
+***********************************************************************
+#Java
+import java.util.Arrays;
+class Solution {
+    public int minimumSum(int num) {
+        int[] digits = new int[4];
+for (int i = 0; i < 4; i++) {
+    digits[i] = num % 10; 
+    num /= 10; 
+}
+        Arrays.sort(digits);
+        int nums1=digits[0]*10+digits[3];
+        int nums2=digits[1]*10+digits[2];
+        return nums1+nums2;
+    }
+}
+
+
+***********************************************************************
+#Python
+
+def minimumSum(num):
+    digits = [int(d) for d in str(num)]
+    digits.sort()
+    num1 = digits[0] * 10 + digits[3]
+    num2 = digits[1] * 10 + digits[2]
+    return num1 + num2
+
+***********************************************************************
