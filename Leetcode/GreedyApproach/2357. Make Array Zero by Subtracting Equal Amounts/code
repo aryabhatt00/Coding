@@ -1,0 +1,27 @@
+
+| Operation             | Time Complexity     | Space Complexity   |
+| --------------------- | ------------------- | ------------------ |
+| Iterate through array | O(n)                | O(1)               |
+| Insert into set       | O(1) average per op | O(n) in worst case |
+| Return size           | O(1)                | O(1)               |
+| **Overall**           | **O(n)**            | **O(n)**           |
+
+*******************************************************************
+#Java
+class Solution {
+    public int minimumOperations(int[] nums) {
+        HashSet<Integer> map1= new HashSet<>();
+        for(int n:nums){
+            if(n!=0)
+            map1.add(n);
+        }
+        return map1.size();
+    }
+}
+
+*******************************************************************
+#Python
+def minimumOperations(nums):
+    return len({n for n in nums if n != 0})
+
+*******************************************************************
